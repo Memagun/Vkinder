@@ -41,36 +41,34 @@ class VkTools:
                                "id": profile["id"]
                                })
         return result
-    #
-    # def photos_get(self, user_id):
-    #     photos = self.ext_api.method("photos.get",
-    #                                  {"album_id": "profile",
-    #                                   "owner_id": user_id
-    #                                  }
-    #                                  )
-    #     try:
-    #         photos = photos["items"]
-    #     except KeyError:
-    #         return
-    #
-    #     result = []
-    #     for num, photo in enumerate(photos):
-    #         result.append({"owner_id": photo["owner_id"],
-    #                        "id": photo["id"]
-    #                        })
-    #         if num == 2:
-    #             break
-    #
-    #     return result
+
+    def photos_get(self, user_id):
+        photos = self.ext_api.method("photos.get",
+                                     {"album_id": "profile",
+                                      "owner_id": user_id,
+                                      "extended": 1
+                                     }
+                                     )
+        try:
+            photos = photos["items"]
+        except KeyError:
+            return
+
+        result = []
+        for num, photo in enumerate(photos):
+            for like in enumerate(photos):
+                result.append({"owner_id": photo["owner_id"],
+                               "id": photo["id"],
+                               "likes": like})
+            if num == 2:
+                break
+
+        return result
 
 
 if __name__ == "__main__":
     tools = VkTools(access_token)
-    # info = tools.ge
-    # print(tools.get_profile_info(1))
-    profiles = tools.user_search(1, 20, 40, 1)
-    print(profiles)
-    # photos = tools.photos_get("user_id")
-    # pprint(photos)
-    #
-    # media = f"photo_owner_id_photo_id"
+    photos = tools.photos_get(1)
+    get_users = tools.user_search() #type info for search criteria
+    print(photos)
+
