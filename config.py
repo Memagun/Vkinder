@@ -1,0 +1,6 @@
+access_token = "vk1.a.VM-wB0Rhx0ZEJEhwCTsKBYvFLlxD2SH7k9dYP6z-T6WQd0c8D6KVTPJUicXRvVMRH78NlWrj-x-wloDiPUnJtvWjF7TxaS6ShuW_wqbfs-pv2gY52tBj5__ZRE-jHl0dSkeFqi33ihgHdqMvjk-u_lKFJsfNvf5UJw5ZTN2IABFzE5h1u_u06eqhhlRdS9JA-ZCSK3yl-Bmd0PYRg5RVWw"
+community_token = "vk1.a.96FkNnL_ZlxQnJaNb55ARWM_3qsxAHTYgmx-Q09HwxpLJV1p6r7JxSGkc1acPDhC88cUFWz1U_hYs99HaulAwaOg_YP-QW8QouUpNLs2H2yuplYGNvjWKTod3rqra8R6SU2x7jVcFW79tBPagpw2gM2bCBXvkORtsavNZWJy6AU_i0WGh8mh8X4DHZ-5g7Ui4PFZ2kmmz4E86DTsb-HU2A"
+db_access_token = ""
+
+# app_id = "51621160'
+# user_id=757629764
