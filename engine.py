@@ -1,8 +1,10 @@
 import vk_api
 
 from pprint import pprint
+import datetime
 from config import access_token
 from vk_api.exceptions import ApiError
+from vk_api.longpoll import VkLongPoll
 
 
 class VkTools:
@@ -21,8 +23,7 @@ class VkTools:
                                         "fields": "bdate, city, sex, relation"
                                        }
                                        )
-            info_result = []
-            info_result.append(*info)
+            info_result = [*info]
         except ApiError:
             return
 
@@ -35,7 +36,7 @@ class VkTools:
                                         "age_from": age_from,
                                         "age_to": age_to,
                                         "sex": sex,
-                                        "count": 10,
+                                        "count": 50,
                                         "offset": offset,
                                         "fields": "city"
                                         })
@@ -46,7 +47,7 @@ class VkTools:
         result = []
         for profile in profiles:
             if not profile['is_closed']:
-                self.city_title = profiles[0]["city"]["title"]
+                # self.city_title = profile[0]["city"] <- Вот тут сыпется.
                 result.append({"name": profile["first_name"] + " " + profile["last_name"],
                                "id": profile["id"],
                                "city_title": self.city_title
@@ -92,6 +93,7 @@ bot = VkTools(access_token)
 if __name__ == "__main__":
     # print(bot.user_search(1, 20, 40, 2))
     # print(bot.photos_get(1))
+    # print(bot.user_search(1, 20, 30, 1))
     bot.get_profile_info(bot.user_id)
     bot.user_search(bot.city_title, bot.sex, bot.age_from, bot.age_to)
     bot.photos_get(bot.user_id)
